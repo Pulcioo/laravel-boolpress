@@ -9,9 +9,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Titolo</th>
-                    <th>Slug</th>
-                    <th class="text-center">Azioni</th>
+                    <th>ID</th>
+                    <th>TITOLO</th>
+                    <th>SLUG</th>
+                    <th class="text-center">AZIONI</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,10 +22,10 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
                         <td>
-                            <a class="btn btn-success" href="{{ route('admin.posts.show', $post->id) }}">SHOW</a>
+                            <a class="btn btn-success" href="{{ route('admin.posts.show', $post->id) }}">DETTAGLI</a>
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post->id) }}">EDIT</a>
+                            <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post->id) }}">MODIFICA</a>
                         </td>
                         <td>
                             <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post->id) }}"
