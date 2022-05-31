@@ -12,7 +12,7 @@
                     <th>ID</th>
                     <th>TITOLO</th>
                     <th>SLUG</th>
-                    <th class="text-center">AZIONI</th>
+                    <th>AZIONI</th>
                 </tr>
             </thead>
             <tbody>
