@@ -36,6 +36,20 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label>Categoria</label>
+                <select name="category_id">
+                    <option value="">Scegli categoria</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ $category->id == old('category->id') ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-success">Crea post</button>
             </div>
         </form>
