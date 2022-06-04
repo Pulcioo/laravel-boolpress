@@ -37,10 +37,11 @@
             </div>
             <div class="form-group">
                 <label>Categoria</label>
-                <select name="category_id">
+                <select name="category_id" class="@error('category_id') is-invalid @enderror">
                     <option value="">Scegli categoria</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $category->id == old('category->id') ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}"
+                            {{ $category->id == old('category->id') ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                     @endforeach
