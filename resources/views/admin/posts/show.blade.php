@@ -13,6 +13,8 @@
             <p>{{ $post->content }}</p>
             <h3>Slug</h3>
             <p>{{ $post->slug }}</p>
+            <h3>Categoria</h3>
+            <p>{{ $category->name }}</p>
         </div>
     </div>
 @endsection
