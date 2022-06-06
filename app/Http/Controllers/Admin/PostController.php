@@ -48,8 +48,9 @@ class PostController extends Controller
         //
         $request->validate([
             'title'=>'required|max:250',
-            'content'=>'required',
-            'category_id'=>'required|exists:categories,id'
+            'content'=>'required|min:5',
+            'category_id'=>'required|exists:categories,id',
+            'tags'=>'exists:tags,id'
         ]);
         $postData = $request->all();
         $newPost = new Post();
@@ -67,6 +68,12 @@ class PostController extends Controller
 
         $newPost->slug = $alternativeSlug;
         $newPost->save();
+
+        // add tags
+        if(array_key_exists('tags', $postData)){
+            $newPost->tags()->sync($postData['tags']);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 
