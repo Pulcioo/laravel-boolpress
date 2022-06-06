@@ -156,6 +156,7 @@ class PostController extends Controller
     {
         //
         $posts= Post::find($id);
+        $posts->tags()->sync([]);
         $posts->delete();
         return redirect()->route('admin.posts.index');
     }
