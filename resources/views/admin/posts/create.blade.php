@@ -53,7 +53,8 @@
                 <div>Tags</div>
                 @foreach ($tags as $tag)
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="m-1">
+                        <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="m-1"
+                            {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
                         <div>{{ $tag->name }}</div>
                     </div>
                 @endforeach
