@@ -15,6 +15,10 @@
             <p>{{ $post->slug }}</p>
             <h3>Categoria</h3>
             <p>{{ $category->name }}</p>
+            <h3>Tags</h3>
+            @foreach ($post->tags as $tag)
+                <span>{{ $tag->name }}</span>
+            @endforeach
         </div>
     </div>
 @endsection

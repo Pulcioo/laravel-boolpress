@@ -30,8 +30,7 @@
             </div>
             <div class="form-group">
                 <label>Contenuto</label>
-                <textarea name="content" class="form-control @error('content') is-invalid @enderror" rows="8"
-                    required>{{ old('content', $post->content) }}</textarea>
+                <textarea name="content" class="form-control @error('content') is-invalid @enderror" rows="8" required>{{ old('content', $post->content) }}</textarea>
                 @error('content')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -48,6 +47,19 @@
                     @endforeach
                 </select>
                 @error('category_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div>Tags</div>
+                @foreach ($tags as $tag)
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="m-1"
+                            {{ $post->tags->contains($tag) ? 'checked' : '' }}>
+                        <div>{{ $tag->name }}</div>
+                    </div>
+                @endforeach
+                @error('tags[]')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
