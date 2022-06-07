@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>TITOLO</th>
                     <th>SLUG</th>
+                    <th>CATEGORIE</th>
                     <th>TAGS</th>
                     <th>AZIONI</th>
                 </tr>
@@ -21,13 +22,13 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
+                        <td>{{ $post->slug }}</td>
                         <td>{{ $post->category->name }}</td>
                         <td>
                             @foreach ($post->tags as $tag)
                                 <span>{{ $tag->name }}</span>
                             @endforeach
                         </td>
-                        <td>{{ $post->slug }}</td>
                         <td>
                             <a class="btn btn-success" href="{{ route('admin.posts.show', $post->id) }}">DETTAGLI</a>
                         </td>
