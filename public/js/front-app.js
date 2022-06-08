@@ -49629,6 +49629,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.get('http://127.0.0.1:8000/api/posts').then(function (result) {
+  console.log(result);
+})["catch"](function (e) {
+  console.log(e);
+});
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
