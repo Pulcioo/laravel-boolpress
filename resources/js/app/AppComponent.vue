@@ -1,5 +1,5 @@
 <template>
-  <div>Stiamo lavorando per voi!</div>
+  <router-view></router-view>
 </template>
 
 <script>
