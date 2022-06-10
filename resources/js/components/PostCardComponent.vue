@@ -1,8 +1,10 @@
 <template>
   <div class="container">
-    <div v-for="(post, index) in posts" :key="index">
+    <div id="card" v-for="post in posts" :key="post.id">
       <span>Titolo: {{ post.title }}</span>
-      <p>Contenuto: {{ post.content }}</p>
+      <router-link :to="{ name: 'detail', params: { slug: post.slug } }">
+        + Dettagli
+      </router-link>
     </div>
   </div>
 </template>
@@ -14,5 +16,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+#card {
+  margin: 20px 0px;
+}
 </style>

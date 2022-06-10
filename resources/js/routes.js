@@ -8,6 +8,7 @@ import HomeComponent from './pages/HomeComponent'
 import ContactsComponent from './pages/ContactsComponent'
 import NotFoundComponent from './pages/NotFoundComponent'
 import BlogComponent from './pages/BlogComponent'
+import DetailComponent from './pages/DetailComponent'
 
 const router = new VueRouter({
     mode: 'history',
@@ -23,9 +24,14 @@ const router = new VueRouter({
             component: ContactsComponent
         },
         {
-            path: '/blog',
+            path: '/blog/',
             name: 'blog',
             component: BlogComponent
+        },
+        {
+            path: '/blog/:slug',
+            name: 'detail',
+            component: DetailComponent
         },
         {
             path: '/*',
