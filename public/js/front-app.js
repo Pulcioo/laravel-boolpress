@@ -2022,26 +2022,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BlogComponent",
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      currentPage: 1,
+      lastPage: 1,
+      prevPageUrl: "",
+      nextPageUrl: ""
     };
   },
   components: {
     PostCardComponent: _components_PostCardComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    var _this = this;
+    this.loadPage("http://127.0.0.1:8000/api/posts");
+  },
+  methods: {
+    loadPage: function loadPage(url) {
+      var _this = this;
 
-    window.axios.get("http://127.0.0.1:8000/api/posts").then(function (result) {
-      console.log(result);
-      _this.posts = result.data;
-    })["catch"](function (e) {
-      console.log(e);
-    });
+      window.axios.get(url).then(function (result) {
+        console.log(result);
+        _this.posts = result.data.data;
+        _this.currentPage = result.data.current_page;
+        _this.lastPage = result.data.last_page;
+        _this.prevPageUrl = result.data.prev_page_url;
+        _this.nextPageUrl = result.data.next_page_url;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    },
+    previousPage: function previousPage() {
+      this.loadPage(this.prevPageUrl);
+    },
+    nextPage: function nextPage() {
+      this.loadPage(this.nextPageUrl);
+    }
   }
 });
 
@@ -38534,6 +38566,44 @@ var render = function () {
             1
           )
         : _c("div", [_vm._v("Caricamento in corso...")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _vm.prevPageUrl
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                on: {
+                  click: function ($event) {
+                    return _vm.previousPage()
+                  },
+                },
+              },
+              [_vm._v("\n        Precedente\n      ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("span", [
+          _vm._v(
+            "Pagina " + _vm._s(_vm.currentPage) + " di " + _vm._s(_vm.lastPage)
+          ),
+        ]),
+        _vm._v(" "),
+        _vm.nextPageUrl
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                on: {
+                  click: function ($event) {
+                    return _vm.nextPage()
+                  },
+                },
+              },
+              [_vm._v("\n        Successiva\n      ")]
+            )
+          : _vm._e(),
+      ]),
     ]),
   ])
 }
